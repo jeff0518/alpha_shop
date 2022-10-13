@@ -2,4 +2,149 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+
+:root {
+  --font-color: #2a2a2a;
+  --border-bottom-color: #2a2a2a1a;
+  --background-color: #b7b7b733;
+}
+
+
+header {
+  position: fixed;
+  width: 100%;
+  .nav {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+
+    //漢堡排
+    &-toggle {
+      visibility: hidden;
+      position: absolute;
+    }
+    &-toggle:checked ~ .menu,
+    &-toggle:checked ~ .icon {
+      transform: scale(1, 1);
+      transition: opacity 0.3s ease-out 0.15s;
+      opacity: 1;
+    }
+
+    .nav-toggle-label {
+      position: absolute;
+      top: 27px;
+      left: 17px;
+      display: flex;
+      align-items: center;
+
+      .hamburger {
+        position: relative;
+        width: 15px;
+        height: 1px;
+        background-color: var(--font-color);
+        z-index: 2;
+      }
+
+      .hamburger::before,
+      .hamburger::after {
+        position: absolute;
+        left: 0;
+        content: "";
+      }
+
+      .hamburger::before {
+        top: 6px;
+        width: 10px;
+        height: 1px;
+        background-color: var(--font-color);
+      }
+
+      .hamburger::after {
+        bottom: 6px;
+        width: 20px;
+        height: 1px;
+        background-color: var(--font-color);
+      }
+    }
+    .menu {
+      transform: scale(1, 0);
+      transform-origin: top;
+      transition: transform 0.3s ease-out;
+      opacity: 0;
+      margin-top: 56px;
+      background-color: var(--background-color);
+      
+      &__tag {
+        list-style: none;
+        border-bottom: 1px solid var(--border-bottom-color);
+        height: 64px;
+        width: 346px;
+        margin: 0 auto;
+        text-align: center;
+
+        &__link {
+          text-decoration: none;
+          color: var(--font-color);
+          font-size: 16px;
+          font-weight: 500;
+          line-height: 64px;
+        }
+      }
+    }
+
+    .icon {
+      transform: scale(1, 0);
+      transition: transform .4s ease-out;
+      opacity: 0;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      margin-top: 24px;
+      background-color: var(--background-color);
+
+      &__img {
+        list-style: none;
+
+        img {
+          width: 20px;
+          height: 20px;
+        }
+      }
+      &__search {
+        margin-right: 49px;
+      }
+      &__shop {
+        margin-right: 43px;
+      }
+    }
+
+    .logo {
+      position: absolute;
+      top: 16px;
+      left: 50%;
+      transform: translate(-50%);
+      img {
+        width: 136px;
+        height: 24px;
+      }
+      
+    }
+  }
+}
+
+main {
+  position: relative;
+  top: 72px;
+}
+
+@media screen and (min-width: 376px) {
+  header {
+    background-color: red;
+  }
 }
